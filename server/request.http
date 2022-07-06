@@ -1,0 +1,58 @@
+### CRUD USER/POST_SKILL MODEL
+POST http://localhost:8080/api/Todo/User/register
+content-Type:application/json
+
+
+{
+    "username":"binhhu19@gmail.com",
+    "password":"Binhthanh@87"
+}
+
+###
+
+POST http://localhost:8080/api/Todo/User/login
+content-Type:application/json
+
+
+{
+    "username":"binhhu12@gmail.com",
+    "password":"Binhthanh@87"
+}
+
+
+###
+POST http://localhost:8080/api/Todo/Post/createPost
+content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+
+   {
+     "title":"Noders_Redux,Scrol,",
+      "description":"Học reacjs nên học các thư viện cần thiết sau: React-routerdom,React-redux,Redux-thunk,Antd,MaterialUI,React-Scroll,React-Player,Axios...",
+      "status":"LEARNING",
+      "url":"reactjs.org"
+    }
+
+###
+GET http://localhost:8080/api/Todo/Post 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+
+
+###
+PUT http://localhost:8080/api/Todo/Post/updatePost/62c57cd5267dc61d4fb26de0
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM1N2NkNTI2N2RjNjFkNGZiMjZkZTAiLCJpYXQiOjE2NTcxMDk3MTh9.EqAst6aGBQxw9dFDdSIH6KHuzjx0M21GS7sbqtteYH4
+
+{
+  "title":"Update Post",
+      "description":"Học vuejs nên học các thư viện cần thiết sau: React-routerdom,React-redux,Redux-thunk,Antd,MaterialUI,React-Scroll,React-Player,Axios...",
+      "status":"LEARNED",
+      "url":"reactjs.org"
+    
+}
+
+###
+DELETE http://localhost:8080/api/Todo/Post/deletePost/62c45aab38eba8cf6e2f275a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+
