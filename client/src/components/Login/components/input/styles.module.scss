@@ -1,0 +1,24 @@
+@import "../../../../styles/utilities/mixins";
+
+.container {
+  .container_form_label {
+    color: $c_content;
+  }
+  .container_form_item {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    .container_form_input {
+      @include input;
+    }
+    .container_form_icon {
+      margin: 5px;
+      margin-right: -25px;
+      z-index: 1;
+      color: $c_label;
+    }
+  }
+  .container_form_error {
+    @include error;
+  }
+}

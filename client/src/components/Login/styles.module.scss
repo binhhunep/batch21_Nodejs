@@ -1,0 +1,18 @@
+@import "../../styles/utilities/mixins";
+@import "../../styles/utilities/variables";
+.container {
+  padding: 25vh 0;
+  @include login;
+  .container_title {
+    margin-bottom: 30px;
+  }
+  .container_avatar {
+    margin-bottom: 30px;
+  }
+  .container_form {
+    @include form;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../../styles/utilities/mixins";
+
+.container_form_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .container_form_button {
+    @include button;
+  }
+  .container_form_or {
+    font-size: 15px;
+  }
+  .container_form_register {
+    font-style: oblique;
+    text-decoration: none;
+    @include registerContent;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+.container_form_button {
+  margin-left: -5px;
+  @include button;
+  &:hover {
+    opacity: 1;
+  }
+}

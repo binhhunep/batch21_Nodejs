@@ -1,0 +1,80 @@
+@import "./variables";
+
+@mixin title {
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  text-align: center;
+  color: $c_title;
+}
+
+@mixin avatar {
+  background-image: url("../../../public/images/avatar.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+@mixin input {
+  margin-bottom: 13px;
+  color: $c_label;
+  margin: 5px;
+  padding: 0 25px;
+  width: 250px;
+  height: 30px;
+}
+
+@mixin button {
+  width: 250px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  background-color: $bg_btn;
+  padding: 5px 0;
+  border-radius: 5px;
+  border: none;
+  color: $c_button;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@mixin content {
+  width: 250px;
+  font-size: 15px;
+  text-align: start;
+  text-transform: capitalize;
+  color: $c_content;
+}
+
+@mixin registerContent {
+  font-size: 15px;
+  text-align: start;
+  text-transform: capitalize;
+  color: $c_register;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@mixin login {
+  background-image: url("../../../public/images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+@mixin form {
+  width: 80px;
+  height: 160px;
+  margin: auto;
+  color: $c_content;
+}
+@mixin error {
+  color: $c_error;
+  font-size: 13px;
+  font-style: oblique;
+}
