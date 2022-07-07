@@ -2,11 +2,26 @@ import UserModel from "../../models/TodoModel/UserModel";
 import UserValidation from "../../validation/TodoValidation/UserValidation";
 import argon2 from "argon2"; //add thu vien hashpassword
 import jwt from "jsonwebtoken"; //add thu vien tao token
+import { date } from "joi";
 require("dotenv").config();
 
 const getUsers = async (req, res) => {
   try {
-    const users = await UserModel.find();
+    const users = await UserModel.find({ isActive: false }, (err, docs) => {
+      if (err) {
+        return res.status(400).json({
+          success: false,
+          message: err,
+        });
+      }
+    })
+      .sort({
+        first_name: -1,
+      })
+      .select({ first_name: 1, last_name: 1 })
+      // .limit(10)
+      .skip(100);
+    console.log(users);
     return res.status(200).json({
       success: true,
       message: "Get all user!",
@@ -22,8 +37,19 @@ const getUsers = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-  const user = { username: req.body.username, password: req.body.password };
-
+  const user = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    gender: req.body.gender,
+    address: req.body.address,
+    university: req.body.university,
+    isActive: req.body.isActive,
+    createdAt: new Date(),
+    username: req.body.username,
+    password: req.body.password,
+  };
+  console.log(user);
   //check missing params
 
   if (!user.username || !user.password) {
@@ -48,7 +74,7 @@ const registerUser = async (req, res) => {
     if (currentUser) {
       return res.status(400).json({
         success: false,
-        message: `User already exist!`,
+        message: "User already exist!",
       });
     }
 
@@ -58,6 +84,14 @@ const registerUser = async (req, res) => {
     let newUser = new UserModel({
       username: user.username,
       password: hashedPassword,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      gender: user.gender,
+      address: user.address,
+      university: user.university,
+      isActive: user.isActive,
+      createdAt: user.createdAt,
     });
     await newUser.save();
 

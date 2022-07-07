@@ -7,8 +7,6 @@ import mongoose from "mongoose";
 
 import bodyParser from "body-parser";
 
-import authRouter from "./router/AuthRouter";
-import ProductManagementRouter from "./router/ProductManagementRouter";
 import UsersRouter from "./router/TodoRouter/UserRouter";
 import PostRouter from "./router/TodoRouter/PostRouter";
 
@@ -17,19 +15,25 @@ require("dotenv").config();
 //connect mongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      `mongodb+srv://${process.env.USERNAME_DB}:${process.env.PASSWORD_DB}@batch21nodejsfull.zo5czfu.mongodb.net/?retryWrites=true&w=majority`,
-      {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-      }
-    );
+    // await mongoose.connect(
+    //   `mongodb+srv://${process.env.USERNAME_DB}:${process.env.PASSWORD_DB}@batch21nodejsfull.zo5czfu.mongodb.net/?retryWrites=true&w=majority`,
+    //   {
+    //     useCreateIndex: true,
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //     useFindAndModify: false,
+    //   }
+    // );
+
+    await mongoose.connect(process.env.LINK_DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    });
     console.log("connecting mongoDB");
   } catch (error) {
     console.log(error.message);
-    process.exit(1);
   }
 };
 
@@ -53,8 +57,7 @@ app.get("/", (req, res) => {
 });
 
 //Goi API ngan gon
-authRouter(app);
-ProductManagementRouter(app);
+
 UsersRouter(app);
 PostRouter(app);
 

@@ -8,7 +8,7 @@ function InputC({ label, icon, error }) {
     <div className={styles.container}>
       <label className={styles.container_form_label}>{label}</label>
       <div className={styles.container_form_item}>
-        {label === "UserOutlined" ? (
+        {icon === "UserOutlined" ? (
           <UserOutlined className={styles.container_form_icon} />
         ) : (
           <LockOutlined className={styles.container_form_icon} />

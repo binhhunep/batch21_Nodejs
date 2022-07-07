@@ -4,9 +4,23 @@ content-Type:application/json
 
 
 {
-    "username":"binhhu19@gmail.com",
-    "password":"Binhthanh@87"
+       "username": "binhhunep19@gmail.com",
+        "password": "Binhhunep6@",
+        "first_name": "Binh",
+        "last_name": "Doan Thanh",
+        "email": "binhhunep2@gmail.com",
+        "gender": "Male",
+        "address": "66CMT8,Khue Trung,Cam Le",
+        "university": "Back Khoa Da Nang",
+        "isActive": false
 }
+
+####
+
+GET  http://localhost:8080/api/Todo/User
+content-Type:application/json
+
+
 
 ###
 
@@ -55,4 +69,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM1N
 DELETE http://localhost:8080/api/Todo/Post/deletePost/62c45aab38eba8cf6e2f275a
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+
 
