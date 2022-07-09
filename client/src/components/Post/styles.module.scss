@@ -1,0 +1,13 @@
+@import "../../styles/utilities/mixins";
+@import "../../styles/utilities/variables";
+.container {
+  padding: 15px;
+  .container_title {
+    font-family: "Splash", cursive;
+    text-align: center;
+    font-size: 40px;
+    background: -webkit-linear-gradient(rgb(244, 247, 228), rgb(211, 15, 15));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

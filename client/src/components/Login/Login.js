@@ -1,14 +1,42 @@
-import React from "react";
-import { Button, Form } from "antd";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./styles.module.scss";
+import { Form } from "antd";
+
+import * as usersApi from "../../api/services/usersApi";
 
 import Title from "./components/title/Title";
 import Avatar from "./components/avatar/Avatar";
 import InputC from "./components/input/Input";
 import ButtonC from "./components/button/Button";
 
+import * as authSlice from "../../redux/slice/auth/authSlice";
+
 function Login() {
+  const disPatch = useDispatch();
+
+  const [user, setUser] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const checkUsername = (username) => {
+    setUser({ ...user, username: username });
+  };
+  const checkPassword = (password) => {
+    setUser({ ...user, password: password });
+  };
+  const loginClick = async () => {
+    const res = await usersApi.checkLogin(user);
+    if (res.success === false) {
+      setError(res.message);
+      setIsSuccess(false);
+    } else {
+      setError(res.message);
+      setIsSuccess(!isSuccess);
+      disPatch(authSlice.default.actions.getUser(res));
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.container_title}>
@@ -25,13 +53,32 @@ function Login() {
         }}
       >
         <Form.Item>
-          <InputC label={"Username"} icon={"UserOutlined"} error={""} />
+          <InputC
+            onChange={(username) => {
+              checkUsername(username);
+            }}
+            label={"Username"}
+            icon={"UserOutlined"}
+            error={""}
+          />
         </Form.Item>
         <Form.Item name="password">
-          <InputC label={"Password"} icon={"LockOutlined"} error={""} />
+          <InputC
+            onChange={(password) => {
+              checkPassword(password);
+            }}
+            label={"Password"}
+            icon={"LockOutlined"}
+            error={error}
+          />
         </Form.Item>
         <Form.Item>
-          <ButtonC />
+          <ButtonC
+            onClick={loginClick}
+            src={"register"}
+            isSuccess={isSuccess}
+            username={user.username}
+          />
         </Form.Item>
       </Form>
     </div>

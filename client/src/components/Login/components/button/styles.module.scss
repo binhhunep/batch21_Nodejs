@@ -10,6 +10,7 @@
   }
   .container_form_or {
     font-size: 15px;
+    color: white;
   }
   .container_form_register {
     font-style: oblique;
@@ -22,6 +23,7 @@
 }
 .container_form_button {
   margin-left: -5px;
+  margin-top: 30px;
   @include button;
   &:hover {
     opacity: 1;

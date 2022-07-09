@@ -75,6 +75,7 @@
 }
 @mixin error {
   color: $c_error;
+  text-align: justify;
   font-size: 13px;
   font-style: oblique;
 }
