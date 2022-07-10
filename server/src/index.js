@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public")); // cho phep luu ca file anh va file gi do de moc ra su dung tren UI
 app.use(helmet()); //build-in middleware (15 middleware bao mat server)
+app.use(cors());
 
 //server-side rendering
 

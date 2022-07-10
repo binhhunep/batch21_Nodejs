@@ -20,9 +20,10 @@ const slice = createSlice({
     getPost: (state, action) => {
       return state;
     },
-    createPost: (state, action) => {
-      const username = action.payload;
-      return { ...state, username: username };
+    createPost: async (state, action) => {
+      const newPost = action.payload;
+
+      // return { ...state, data: state.data.push(newPost) };
     },
     updatePost: (state, action) => {
       const username = action.payload;

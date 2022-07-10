@@ -20,7 +20,11 @@ const getAllPosts = async (token) => {
 
 const createPost = async (data) => {
   return await axiosClient
-    .post(types.POSTS_CREATE, data)
+    .post(types.POSTS_CREATE, data.data, {
+      headers: {
+        Authorization: "Bearer ".concat(data.token),
+      },
+    })
     .then((res) => {
       const response = res.data;
       return response;
@@ -32,8 +36,13 @@ const createPost = async (data) => {
 };
 
 const updatePost = async (data) => {
+  console.log(data);
   return await axiosClient
-    .put(types.POSTS_UPDATE, data)
+    .put(`${types.POSTS_UPDATE}/${data.post.post.idObj}`, data.newPost, {
+      headers: {
+        Authorization: "Bearer ".concat(data.post.token),
+      },
+    })
     .then((res) => {
       const response = res.data;
       return response;
@@ -46,7 +55,11 @@ const updatePost = async (data) => {
 
 const deletePost = async (data) => {
   return await axiosClient
-    .delete(types.POSTS_DELETE, data)
+    .delete(`${types.POSTS_DELETE}/${data.post.post.idObj}`, {
+      headers: {
+        Authorization: "Bearer ".concat(data.post.token),
+      },
+    })
     .then((res) => {
       const response = res.data;
       return response;

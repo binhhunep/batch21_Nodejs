@@ -4,7 +4,7 @@ content-Type:application/json
 
 
 {
-       "username": "binhhunep19@gmail.com",
+       "username": "binhhunep@gmail.com",
         "password": "Binhhunep6@",
         "first_name": "Binh",
         "last_name": "Doan Thanh",
@@ -37,7 +37,7 @@ content-Type:application/json
 ###
 POST http://localhost:8080/api/Todo/Post/createPost
 content-Type:application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM5OTczNjdmZmZiZTQxYmMzZGZkMzMiLCJpYXQiOjE2NTczNzg2MTR9.OopqjGYKZEBNJKo8DS2S4C3xriy5v1IJI91ckVhZ0ak
 
    {
      "title":"Noders_Redux,Scrol,",
@@ -49,11 +49,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0N
 ###
 GET http://localhost:8080/api/Todo/Post 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM0NWFhYjM4ZWJhOGNmNmUyZjI3NWEiLCJpYXQiOjE2NTcwMzU0MzV9.I3Yq7lGgQhGtoKK9E1kSfU_ojiW7RCIkmR99rTjsIyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM5OTczNjdmZmZiZTQxYmMzZGZkMzMiLCJpYXQiOjE2NTczNzg2MTR9.OopqjGYKZEBNJKo8DS2S4C3xriy5v1IJI91ckVhZ0ak
 
 
 ###
-PUT http://localhost:8080/api/Todo/Post/updatePost/62c57cd5267dc61d4fb26de0
+PUT http://localhost:8080/api/Todo/Post/updatePost/62c800c5f68f73bdced5b124
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmM1N2NkNTI2N2RjNjFkNGZiMjZkZTAiLCJpYXQiOjE2NTcxMDk3MTh9.EqAst6aGBQxw9dFDdSIH6KHuzjx0M21GS7sbqtteYH4
 

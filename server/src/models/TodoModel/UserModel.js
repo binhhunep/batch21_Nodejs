@@ -16,13 +16,13 @@ const usersSchema = new Schema({
   first_name: {
     type: String,
     uppercase: true,
-    match: /[a-z]/,
+    // match: /[a-z]/,
     default: "Binh",
   },
   last_name: {
     type: String,
     uppercase: true,
-    match: /[a-z]/,
+    // match: /[a-z]/,
     default: "Doan Thanh",
   },
   email: {
@@ -34,13 +34,13 @@ const usersSchema = new Schema({
   },
   address: {
     type: String,
-    match: /[a-z,1-9]/,
+    // match: /[a-z,1-9]/,
     uppercase: true,
   },
   university: {
     type: String,
     uppercase: true,
-    match: /[a-z]/,
+    // match: /[a-z]/,
     default: "Back Khoa DN",
   },
   isActive: {

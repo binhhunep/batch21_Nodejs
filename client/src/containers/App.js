@@ -13,10 +13,11 @@ import * as authSlice from "../redux/slice/auth/authSlice";
 import * as postSlice from "../redux/slice/post/postSlice";
 
 import authSelector from "../redux/selector/auth/authSelector";
-
+import postSelector from "../redux/selector/post/postSelector";
 function App() {
   const disPatch = useDispatch();
   const auth_Selector = useSelector(authSelector);
+  const post_Selector = useSelector(postSelector);
   const [username, setUsername] = useState(undefined);
 
   useEffect(() => {
@@ -34,6 +35,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/Post" element={username ? <Post /> : <Login />} />
+        <Route path="/Post/create" element={<Post />} />
+        <Route path={`/Post/update/`} element={<Post />} />
       </Routes>
     </Router>
   );
