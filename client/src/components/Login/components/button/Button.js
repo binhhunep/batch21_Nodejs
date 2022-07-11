@@ -5,9 +5,12 @@ import { Button } from "antd";
 import { useDispatch } from "react-redux";
 import authSlice from "../../../../redux/slice/auth/authSlice";
 
-function ButtonC({ src, onClick, username, isSuccess }) {
+function ButtonC({ src, onClick, registerClick }) {
   const handleLoginClick = () => {
     onClick();
+  };
+  const handleRegisterClick = () => {
+    registerClick();
   };
   return (
     <div className={styles.container_form_content}>
@@ -28,9 +31,12 @@ function ButtonC({ src, onClick, username, isSuccess }) {
         }}
       >
         <p className={styles.container_form_or}>Or</p>
-        <NavLink to={`/${src}`} className={styles.container_form_register}>
+        <p
+          className={styles.container_form_register}
+          onClick={handleRegisterClick}
+        >
           &nbsp; register now!
-        </NavLink>
+        </p>
       </div>
     </div>
   );

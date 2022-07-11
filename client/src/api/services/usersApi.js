@@ -27,4 +27,17 @@ const checkLogin = async (data) => {
     });
 };
 
-export { checkLogin, getAllUsers };
+const registerUser = async (data) => {
+  return await axiosClient
+    .post(types.USERS_REGISTER, data)
+    .then((res) => {
+      const response = res.data;
+      return response;
+    })
+    .catch((error) => {
+      const response = error.response.data;
+      return response;
+    });
+};
+
+export { checkLogin, getAllUsers, registerUser };

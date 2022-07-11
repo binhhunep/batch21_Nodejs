@@ -8,7 +8,8 @@ import * as usersApi from "../../api/services/usersApi";
 import Title from "./components/title/Title";
 import Avatar from "./components/avatar/Avatar";
 import InputC from "./components/input/Input";
-import ButtonC from "./components/button/Button";
+
+import RegisterModal from "./components/modal/RegisterModal";
 
 import * as authSlice from "../../redux/slice/auth/authSlice";
 
@@ -73,12 +74,7 @@ function Login() {
           />
         </Form.Item>
         <Form.Item>
-          <ButtonC
-            onClick={loginClick}
-            src={"register"}
-            isSuccess={isSuccess}
-            username={user.username}
-          />
+          <RegisterModal onClick={loginClick} />
         </Form.Item>
       </Form>
     </div>
