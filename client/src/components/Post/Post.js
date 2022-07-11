@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Table, Input, Space, Tag } from "antd";
+import { Table, Input, Space, Tag, Row, Col } from "antd";
 
+import { BiLogOut } from "react-icons/bi";
 import styles from "./styles.module.scss";
 
 import postSelectorRemaining from "../../redux/selector/post/postSelector";
@@ -16,6 +17,7 @@ import * as postSlice from "../../redux/slice/post/postSlice";
 import * as postsApi from "../../api/services/postsApi";
 
 import * as ModalResponse from "./components/ModalResponse";
+import { NavLink } from "react-router-dom";
 
 function Post() {
   const disPatch = useDispatch();
@@ -34,7 +36,14 @@ function Post() {
 
   const handleEditClick = async (post) => {
     setIsEdit(!isEdit);
+    setValueInput({
+      title: post.post.plan,
+      description: post.post.description,
+      url: post.post.source,
+      status: post.post.status,
+    });
     setKey(post.post.key);
+    disPatch(postSlice.default.actions.updatePost(post.post.idObj));
   };
 
   const handleSaveClick = async (post) => {
@@ -56,9 +65,13 @@ function Post() {
   };
 
   const handleDeleteClick = async (post) => {
+    disPatch(postSlice.default.actions.updatePost(post.post.idObj));
     const res = await postsApi.deletePost({ post: post });
     disPatch(postSlice.getPosts(post.token));
-    console.log(res);
+  };
+
+  const handleLogout = () => {
+    
   };
 
   const columns = [
@@ -78,7 +91,11 @@ function Post() {
       width: 300,
       render: (text, item) =>
         item.key === key ? (
-          <Input name="title" onChange={(e) => handleOnChange(e)} />
+          <Input
+            value={valueInput.title}
+            name="title"
+            onChange={(e) => handleOnChange(e)}
+          />
         ) : (
           <p>{text}</p>
         ),
@@ -90,7 +107,11 @@ function Post() {
       width: 500,
       render: (text, item) =>
         item.key === key ? (
-          <Input name="description" onChange={(e) => handleOnChange(e)} />
+          <Input
+            value={valueInput.description}
+            name="description"
+            onChange={(e) => handleOnChange(e)}
+          />
         ) : (
           <p>{text}</p>
         ),
@@ -103,7 +124,11 @@ function Post() {
       width: 300,
       render: (text, item) =>
         item.key === key ? (
-          <Input name="url" onChange={(e) => handleOnChange(e)} />
+          <Input
+            value={valueInput.url}
+            name="url"
+            onChange={(e) => handleOnChange(e)}
+          />
         ) : (
           <p>{text}</p>
         ),
@@ -128,6 +153,7 @@ function Post() {
 
             return item.key === key ? (
               <Input
+                value={valueInput.status}
                 key={item.key}
                 name="status"
                 onChange={(e) => handleOnChange(e)}
@@ -149,30 +175,37 @@ function Post() {
       render: (_, record) => (
         <Space size="middle">
           {!isEdit ? (
-            <a
-              onClick={() =>
-                handleEditClick({ post: record, token: auth_selector.token })
-              }
-            >
-              edit {record.name}
-            </a>
+            <NavLink to={`/Post/update/${record.idObj}`}>
+              <p
+                className={styles.container_action}
+                onClick={() =>
+                  handleEditClick({ post: record, token: auth_selector.token })
+                }
+              >
+                edit {record.name}
+              </p>
+            </NavLink>
           ) : (
-            <a
+            <p
+              className={styles.container_action}
               onClick={() =>
                 handleSaveClick({ post: record, token: auth_selector.token })
               }
             >
               save {record.name}
-            </a>
+            </p>
           )}
-          <a
-            onClick={() =>
-              handleDeleteClick({ post: record, token: auth_selector.token })
-            }
-            style={{ color: "red" }}
-          >
-            Delete
-          </a>
+          <NavLink to={`/Post/delete/${record.idObj}`}>
+            <p
+              className={styles.container_action}
+              onClick={() =>
+                handleDeleteClick({ post: record, token: auth_selector.token })
+              }
+              style={{ color: "red" }}
+            >
+              Delete
+            </p>
+          </NavLink>
         </Space>
       ),
     },
@@ -196,8 +229,20 @@ function Post() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.container_title}>Daily Planner</h1>
-      <CreatePostModal />
+      <Row>
+        <Col span={8} offset={8}>
+          <h1 className={styles.container_title}>Daily Planner</h1>
+        </Col>
+        <Col span={3} offset={5}>
+          <NavLink to="/">
+            <BiLogOut
+              onClick={handleLogout}
+              className={styles.container_logout}
+            />
+          </NavLink>
+        </Col>
+      </Row>
+      <CreatePostModal title={valueInput.title} />
       <Table columns={columns} dataSource={data} />
     </div>
   );

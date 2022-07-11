@@ -29,6 +29,7 @@ function App() {
     disPatch(postSlice.getPosts(auth_Selector.token));
   }, [auth_Selector.username]);
 
+  console.log(post_Selector.idObj);
   return (
     <Router>
       <Routes>
@@ -36,7 +37,14 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/Post" element={username ? <Post /> : <Login />} />
         <Route path="/Post/create" element={<Post />} />
-        <Route path={`/Post/update/`} element={<Post />} />
+        <Route
+          path={`/Post/update/${post_Selector.idObj}`}
+          element={<Post />}
+        />
+        <Route
+          path={`/Post/delete/${post_Selector.idObj}`}
+          element={<Post />}
+        />
       </Routes>
     </Router>
   );

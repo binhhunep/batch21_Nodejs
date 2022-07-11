@@ -1,18 +1,20 @@
 import { Modal } from "antd";
 import React, { useState } from "react";
+import styles from "./styles.module.scss";
 
 import { SiAddthis } from "react-icons/si";
 import { NavLink } from "react-router-dom";
 
 import CreateForm from "./components/CreateForm";
 
-function CreatePostModal() {
+function CreatePostModal({ title }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <NavLink to="/Post/create">
         <SiAddthis
+          className={styles.container_add}
           onClick={() => setModalVisible(true)}
           style={{
             color: "#1892ff",
@@ -30,7 +32,7 @@ function CreatePostModal() {
         onCancel={() => setModalVisible(false)}
         footer={null}
       >
-        <CreateForm onClick={() => setModalVisible(false)} />
+        <CreateForm title={title} onClick={() => setModalVisible(false)} />
       </Modal>
     </>
   );

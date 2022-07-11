@@ -30,7 +30,7 @@ const formItemLayout = {
   },
 };
 
-function CreateForm({ onClick }) {
+function CreateForm({ onClick, title }) {
   const disPatch = useDispatch();
   const auth_Selector = useSelector(authSelector);
 

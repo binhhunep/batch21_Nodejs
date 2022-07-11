@@ -6,15 +6,27 @@
   .container_title {
     font-family: "Splash", cursive;
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
     background: -webkit-linear-gradient(rgb(244, 247, 228), rgb(211, 15, 15));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .container_add {
-    color: #1892ff;
+  .container_logout {
     font-size: 40px;
-    margin: 5px auto;
+    margin-top: 15px;
     cursor: pointer;
+    opacity: 0.5;
+    color: goldenrod;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+.container_action {
+  margin: auto;
+  cursor: pointer;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
   }
 }

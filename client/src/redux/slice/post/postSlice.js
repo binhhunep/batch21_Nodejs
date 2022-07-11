@@ -15,23 +15,23 @@ const slice = createSlice({
     data: [],
     loading: false,
     error: "",
+    idObj: "",
   },
   reducers: {
     getPost: (state, action) => {
       return state;
     },
     createPost: async (state, action) => {
-      const newPost = action.payload;
-
+      // const newPost = action.payload;
       // return { ...state, data: state.data.push(newPost) };
     },
     updatePost: (state, action) => {
-      const username = action.payload;
-      return { ...state, username: username };
+      const idObj = action.payload;
+      return { ...state, idObj: idObj };
     },
     deletePost: (state, action) => {
-      const username = action.payload;
-      return { ...state, username: username };
+      const idObj = action.payload;
+      return { ...state, idObj: idObj };
     },
   },
   extraReducers: {
